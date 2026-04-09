@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+python-multipart
+streamlit
+requests
+pillow
+numpy
+matplotlib
+scikit-learn
+torch
+torchvision
+openai
+python-dotenv
