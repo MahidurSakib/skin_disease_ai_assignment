@@ -173,7 +173,7 @@ python train.py --data-dir data/processed --epochs 5 --batch-size 32
 Optional faster training using only the final layer:
 
 ```bash
-python train.py --data-dir data/processed --epochs 5 --batch-size 32 --freeze-backbone
+python train.py --data-dir data/processed --epochs 10 --batch-size 16
 ```
 
 After training, these files are created inside `artifacts/`:
@@ -241,53 +241,8 @@ By default, the UI sends requests to:
 http://127.0.0.1:8000/analyze_skin
 ```
 
-## 9) Test the API directly
 
-### cURL example
 
-```bash
-curl -X POST "http://127.0.0.1:8000/analyze_skin" \
-  -H "accept: application/json" \
-  -H "Content-Type: multipart/form-data" \
-  -F "file=@sample_skin.jpg"
-```
 
-### Example response
 
-```json
-{
-  "disease": "Eczema",
-  "confidence": 0.9213,
-  "recommendations": "Keep the area clean and avoid scratching. This result is not a confirmed diagnosis.",
-  "next_steps": "Monitor the area and consult a dermatologist if symptoms worsen or persist.",
-  "tips": "Use good lighting for future photos and avoid harsh skin products on the area."
-}
-```
 
-## 10) Docker
-
-Build the image:
-
-```bash
-docker build -t skin-disease-api .
-```
-
-Run the container:
-
-```bash
-docker run -p 8000:8000 skin-disease-api
-```
-
-## Notes for GitHub submission
-
-Before pushing to GitHub:
-
-1. Remove large dataset files from the repo.
-2. Do not push `.env`.
-3. Keep only code, README, and generated evaluation outputs if needed.
-4. Train locally and generate `artifacts/` before recording the demo.
-
-## Medical safety note
-
-This is an academic demo project for image classification and LLM-based guidance.
-It should not be used as a final medical diagnosis system.
